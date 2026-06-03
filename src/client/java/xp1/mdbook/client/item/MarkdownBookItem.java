@@ -53,7 +53,7 @@ public class MarkdownBookItem extends Item {
      * Returns default HTML content for demonstration purposes.
      * In a real scenario, this would be replaced with actual Typora-exported HTML.
      */
-    private static String getDefaultHtmlContent() {
+    public static String getDefaultHtmlContent() {
         return """
             <!DOCTYPE html>
             <html>
