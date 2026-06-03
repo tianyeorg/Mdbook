@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.10-SNAPSHOT' apply true // 确保 loom 最先加载且生效
+	id 'fabric-loom' version "${loom_version}" apply true
 	id 'maven-publish'
 }
 
@@ -28,7 +28,8 @@ dependencies {
 	// MCEF 依赖处理 (手动引入模式)
 	// ==========================================
 	// 逻辑：如果 libs 文件夹下有 mcef 开头的 jar 包，自动将其作为 modImplementation 引入
-	def mcefFile = fileTree(dir: 'libs', include: '**/mcef-*.jar').singleOrNull()
+	def mcefFiles = fileTree(dir: 'libs', include: ['**/mcef-*.jar', '**/mcef_*.jar'])
+	def mcefFile = mcefFiles.files ? mcefFiles.files.sort { it.name }.last() : null
 
 	if (mcefFile) {
 		println "Found MCEF locally: ${mcefFile.name}"
@@ -37,7 +38,7 @@ dependencies {
 		// 但如果报错缺少 chromium 相关类，可能需要额外配置，通常 MCEF 自带了。
 	} else {
 		println "WARNING: MCEF jar not found in 'libs' folder. Build might fail at runtime."
-		println "Please download MCEF for 1.21.4 (Fabric) and place it in the 'libs' folder."
+		println "Please download MCEF (Fabric) for your Minecraft version and place it in the 'libs' folder."
 	}
 }
 
@@ -50,7 +51,7 @@ processResources {
 	}
 }
 
-def targetJavaVersion = 21
+def targetJavaVersion = 25
 tasks.withType(JavaCompile).configureEach {
 	it.options.encoding = "UTF-8"
 	if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
