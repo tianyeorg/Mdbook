@@ -12,6 +12,16 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	
+	// MCEF repository
+	maven {
+		name = "Keksuccino Maven"
+		url = "https://maven.keksuccino.com/releases"
+	}
+	maven {
+		name = "Keksuccino Snapshots"
+		url = "https://maven.keksuccino.com/snapshots"
+	}
 }
 
 loom {
@@ -41,6 +51,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	
+	// MCEF - Minecraft Chromium Embedded Framework for rendering HTML/Markdown
+	modImplementation "com.keksuccino:mcef:${project.mcef_version}"
 }
 
 processResources {

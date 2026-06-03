@@ -1,0 +1,28 @@
+```
+# Gradle
+.gradle/
+build/
+
+# Dependencies
+libs/
+lib/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# System
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+```

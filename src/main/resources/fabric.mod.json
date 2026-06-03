@@ -3,7 +3,7 @@
 	"id": "mdbook",
 	"version": "${version}",
 	"name": "Mdbook",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A mod that displays Markdown content as HTML using MCEF browser",
 	"authors": [
 		"Me!"
 	],
@@ -36,6 +36,7 @@
 		"fabricloader": ">=0.19.3",
 		"minecraft": "~26.1.2",
 		"java": ">=25",
-		"fabric-api": "*"
+		"fabric-api": "*",
+		"mcef": "*"
 	}
 }
